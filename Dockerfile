@@ -97,5 +97,9 @@ USER root
 #       SSH Credentials Plugin \
 #       Apache HttpComponents Client 4.x API Plugin \
 # RUN madir -p /var/lib/jenkins/share
+RUN chown -R  ${uid}:${gid} /usr/share
+RUN chown -R  ${uid}:${gid} /usr/share/jenkins
 RUN chown -R  ${uid}:${gid} /usr/share/jenkins/ref/
 
+
+USER ${user}
