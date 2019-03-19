@@ -87,6 +87,7 @@ USER root
 # COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 # RUN mkdir -p /usr/share/jenkins
 # RUN mkdir -p /usr/local/bin/jenkins-support
+RUN rm -f /usr/share/jenkins/ref/plugins/API.lock
 RUN /usr/local/bin/install-plugins.sh \
       docker-slaves \
       Display URL API \
