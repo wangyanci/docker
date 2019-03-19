@@ -99,4 +99,3 @@ USER root
 # RUN madir -p /var/lib/jenkins/share
 RUN chown -R  ${uid}:${gid} /usr/share/jenkins/ref/
 
-USER ${user}
