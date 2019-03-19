@@ -87,15 +87,15 @@ USER root
 # COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 # RUN mkdir -p /usr/share/jenkins
 # RUN mkdir -p /usr/local/bin/jenkins-support
-RUN rm -f /usr/share/jenkins/ref/plugins/API.lock
-RUN /usr/local/bin/install-plugins.sh \
-      docker-slaves \
-      Display URL API \
-      GitHub API Plugin \
-      Credentials Plugin \
-      github-branch-source \
-      SSH Credentials Plugin \
-      Apache HttpComponents Client 4.x API Plugin \
+# RUN rm -f /usr/share/jenkins/ref/plugins/API.lock
+# RUN /usr/local/bin/install-plugins.sh \
+#       docker-slaves \
+#       Display URL API \
+#       GitHub API Plugin \
+#       Credentials Plugin \
+#       github-branch-source \
+#       SSH Credentials Plugin \
+#       Apache HttpComponents Client 4.x API Plugin \
 
 RUN chown -R  ${uid}:${gid} /var/lib/jenkins/share
 
