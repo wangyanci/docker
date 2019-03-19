@@ -70,7 +70,7 @@ EXPOSE ${agent_port}
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
-RUN chown -R  ${uid}:${gid} /var/lib/jenkins/share
+
 USER ${user}
 
 COPY jenkins-support /usr/local/bin/jenkins-support
@@ -83,14 +83,19 @@ COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
 
+USER root
 # COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 # RUN mkdir -p /usr/share/jenkins
 # RUN mkdir -p /usr/local/bin/jenkins-support
-# RUN sudo /usr/local/bin/install-plugins.sh \
-#       docker-slaves \
-#       Display URL API \
-#       GitHub API Plugin \
-#       Credentials Plugin \
-#       github-branch-source \
-#       SSH Credentials Plugin \
-#       Apache HttpComponents Client 4.x API Plugin \
+RUN /usr/local/bin/install-plugins.sh \
+      docker-slaves \
+      Display URL API \
+      GitHub API Plugin \
+      Credentials Plugin \
+      github-branch-source \
+      SSH Credentials Plugin \
+      Apache HttpComponents Client 4.x API Plugin \
+
+RUN chown -R  ${uid}:${gid} /var/lib/jenkins/share
+
+USER ${user}
