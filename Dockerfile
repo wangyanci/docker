@@ -83,7 +83,7 @@ COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
 
-USER root
+# USER root
 # COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 # RUN mkdir -p /usr/share/jenkins
 # RUN mkdir -p /usr/local/bin/jenkins-support
@@ -96,7 +96,7 @@ USER root
 #       github-branch-source \
 #       SSH Credentials Plugin \
 #       Apache HttpComponents Client 4.x API Plugin \
+RUN madir -p /var/lib/jenkins/share
+# RUN chown -R  ${uid}:${gid} /var/lib/jenkins/share
 
-RUN chown -R  ${uid}:${gid} /var/lib/jenkins/share
-
-USER ${user}
+# USER ${user}
