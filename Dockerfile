@@ -62,6 +62,7 @@ RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 RUN mkdir -p /usr/share/jenkins
+RUN mkdir -p /usr/local/bin/jenkins-support
 RUN /usr/local/bin/install-plugins.sh \
       docker-slaves \
       Display URL API \
