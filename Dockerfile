@@ -60,6 +60,17 @@ ENV JENKINS_UC_EXPERIMENTAL=https://updates.jenkins.io/experimental
 ENV JENKINS_INCREMENTALS_REPO_MIRROR=https://repo.jenkins-ci.org/incrementals
 RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 
+COPY install-plugins.sh /usr/local/bin/install-plugins.sh
+RUN mkdir -p /usr/share/jenkins
+RUN /usr/local/bin/install-plugins.sh \
+      docker-slaves \
+      Display URL API \
+      GitHub API Plugin \
+      Credentials Plugin \
+      github-branch-source \
+      SSH Credentials Plugin \
+      Apache HttpComponents Client 4.x API Plugin \
+      
 # for main web interface:
 EXPOSE ${http_port}
 
@@ -79,12 +90,4 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
-RUN mkdir -p /usr/share/jenkins
-RUN /usr/local/bin/install-plugins.sh \
-      docker-slaves \
-      Display URL API \
-      GitHub API Plugin \
-      Credentials Plugin \
-      github-branch-source \
-      SSH Credentials Plugin \
-      Apache HttpComponents Client 4.x API Plugin \
+
