@@ -79,7 +79,7 @@ ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/jenkins.sh"]
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
-
+RUN mkdir -p /usr/share/jenkins
 RUN /usr/local/bin/install-plugins.sh \
       docker-slaves \
       Display URL API \
