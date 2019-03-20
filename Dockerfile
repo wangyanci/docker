@@ -103,3 +103,5 @@ RUN chown -R  ${uid}:${gid} /usr/share/jenkins/ref/
 
 
 USER ${user}
+
+# docker run -d -p 8080:8080 -p 50000:50000 -v /wyc/var/lib/jenkins/:/var/jenkins_home --add-host code-cbu.huawei.com:100.101.9.70 3a264caf9ce4
