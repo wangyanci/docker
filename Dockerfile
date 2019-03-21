@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 #安装golang1.9.2
 ADD https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz /use/local
 WORKDIR /use/local
-RUN tar -C /usr/local -zxf go1.9.2.linux-amd64.tar.gz && \
+RUN tar -zxvf go1.9.2.linux-amd64.tar.gz -C /usr/local && \
       echo export GOROOT=/usr/local/go >> /etc/profile && \
       echo export GOPATH=/var/jenkins_home >> /etc/profile && \
       echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile && \
