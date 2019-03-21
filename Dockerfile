@@ -1,6 +1,23 @@
 FROM openjdk:8-jdk-stretch
 
-RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git curl docker-ce && rm -rf /var/lib/apt/lists/*
+
+# RUN apt-get install -y golang-1.9 && \
+#       echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
+# COPY sources.list /etc/apt/
+# RUN apt-get update --fix-missing &&\
+#       apt-get install \
+#       apt-transport-https \
+#       ca-certificates \
+#       curl \
+#     software-properties-common
+# RUN curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg |apt-key add -
+# RUN add-apt-repository \
+#       "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
+#       $(lsb_release -cs) \
+#       stable"
+# RUN apt-get update --fix-missing && \
+#       apt-get install -y docker-ce
 
 ARG user=jenkins
 ARG group=jenkins
@@ -40,22 +57,7 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && rm -rf /sbin/tini.asc /root/.gnupg \
   && chmod +x /sbin/tini
   
-# RUN apt-get install -y golang-1.9 && \
-#       echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
-COPY sources.list /etc/apt/
-RUN apt-get update --fix-missing &&\
-      apt-get install \
-      apt-transport-https \
-      ca-certificates \
-      curl \
-    software-properties-common
-RUN curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg |apt-key add -
-RUN add-apt-repository \
-      "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
-      $(lsb_release -cs) \
-      stable"
-RUN apt-get update --fix-missing && \
-      apt-get install -y docker-ce
+
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
