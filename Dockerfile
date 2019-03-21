@@ -1,6 +1,13 @@
 FROM openjdk:8-jdk-stretch
 
-RUN apt-get update && apt-get install -y git curl make iptables libdevmapper1.02.1 libltdl7 libseccomp2 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git \
+      gcc \
+      curl \
+      make \
+      iptables \
+      libdevmapper1.02.1 \
+      libltdl7 libseccomp2 && \
+      rm -rf /var/lib/apt/lists/*
 
 #安装golang1.9.2
 ADD https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz /usr/local
