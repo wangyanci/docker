@@ -1,7 +1,16 @@
 FROM openjdk:8-jdk-stretch
 
-RUN apt-get update && apt-get install -y git curl docker-ce && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
+ADD wget https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz 
+
+RUN tar -C /usr/local -zxf go1.9.2.linux-amd64.tar.gz && \
+      echo export GOROOT=/usr/local/go >> /etc/profile && \
+      echo export GOPATH=/var/jenkins_home >> /etc/profile && \
+      echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile && \
+      rm -f go1.10.1.linux-amd64.tar.gz && \
+      go version && \
+      go env
 # RUN apt-get install -y golang-1.9 && \
 #       echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
 # COPY sources.list /etc/apt/
