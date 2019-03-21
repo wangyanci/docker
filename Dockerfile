@@ -43,7 +43,7 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
 # RUN apt-get install -y golang-1.9 && \
 #       echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
 COPY sources.list /etc/apt/
-RUN apt-get update &&\
+RUN apt-get update --fix-missing &&\
       apt-get install \
       apt-transport-https \
       ca-certificates \
@@ -54,7 +54,7 @@ RUN add-apt-repository \
       "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
       $(lsb_release -cs) \
       stable"
-RUN apt-get update && \
+RUN apt-get update --fix-missing && \
       apt-get install -y docker-ce
 
 # jenkins version being bundled in this docker image
