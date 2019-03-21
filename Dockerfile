@@ -43,8 +43,8 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
 # RUN apt-get install -y golang-1.9 && \
 #       echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
 COPY sources.list /etc/apt/
-RUN curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-RUN sudo add-apt-repository \
+RUN curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg |apt-key add -
+RUN add-apt-repository \
       "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu \
       $(lsb_release -cs) \
       stable"
