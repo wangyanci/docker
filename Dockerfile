@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-stretch
 
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
-ADD wget https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz 
+ADD https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz 
 
 RUN tar -C /usr/local -zxf go1.9.2.linux-amd64.tar.gz && \
       echo export GOROOT=/usr/local/go >> /etc/profile && \
