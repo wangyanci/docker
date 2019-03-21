@@ -1,0 +1,25 @@
+#!/usr/bin/expect -f
+set HOST [lindex $argv 0]
+set USER [lindex $argv 1]
+set PASSWD [lindex $argv 2]
+set SOURCEFILE [lindex $argv 3]
+set TARGETDIR [lindex $argv 4]
+spawn sh -c "echo $HOST $USER $PASSWD $SOURCEFILE $TARGETDIR"
+
+# spawn scp -P yourPort  /home/fileName.war root@xxx.xxx.xxx.xxx:/usr/local/liferay-portal/deploy/
+spawn scp -r -P 22  $SOURCEFILE $USER@$HOST:$TARGETDIR
+set timeout 30000
+expect {
+        "(yes/no)?"
+                {
+                        send "yes\n"
+                        expect "*assword:" {send "$PASSWD\r"}
+                }
+        "password:"
+                {
+                        send "$PASSWD\r"
+                }
+}
+set timeout 30000
+expect "100%"
+expect eof
