@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y git \
       gcc \
       curl \
       make \
+      expect \
       iptables \
       libdevmapper1.02.1 \
       libltdl7 libseccomp2 && \
