@@ -40,7 +40,7 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && rm -rf /sbin/tini.asc /root/.gnupg \
   && chmod +x /sbin/tini
   
-RUN apt-get install -y golang-1.9-go && \
+RUN apt-get install -y golang-1.9 && \
       echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
 RUN apt-get install -y docker-ce
 
