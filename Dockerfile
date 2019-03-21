@@ -2,9 +2,9 @@ FROM openjdk:8-jdk-stretch
 
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
+#安装golang1.9.2
 ADD https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz /use/local
 WORKDIR /use/local
-
 RUN tar -C /usr/local -zxf go1.9.2.linux-amd64.tar.gz && \
       echo export GOROOT=/usr/local/go >> /etc/profile && \
       echo export GOPATH=/var/jenkins_home >> /etc/profile && \
@@ -29,6 +29,8 @@ RUN tar -C /usr/local -zxf go1.9.2.linux-amd64.tar.gz && \
 # RUN apt-get update --fix-missing && \
 #       apt-get install -y docker-ce
 
+
+# 安装jenkins
 ARG user=jenkins
 ARG group=jenkins
 ARG uid=1000
