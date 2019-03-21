@@ -9,10 +9,8 @@ RUN tar -zxvf go1.9.2.linux-amd64.tar.gz -C /usr/local && \
       echo export GOROOT=/usr/local/go >> /etc/profile && \
       echo export GOPATH=/var/jenkins_home >> /etc/profile && \
       echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile && \
-      rm -f go1.9.2.linux-amd64.tar.gz && \
-      source /etc/pofile && \
-      go version && \
-      go env
+      rm -f go1.9.2.linux-amd64.tar.gz
+      
 # RUN apt-get install -y golang-1.9 && \
 #       echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
 # COPY sources.list /etc/apt/
