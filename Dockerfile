@@ -13,7 +13,7 @@ RUN tar -zxvf go1.9.2.linux-amd64.tar.gz -C /usr/local && \
 
 #安装docker-ce
 ADD https://download.docker.com/linux/ubuntu/dists/xenial/pool/stable/amd64/docker-ce_18.06.3~ce~3-0~ubuntu_amd64.deb /usr/local
-RUN  sudo dpkg -i /usr/local/docker-ce_18.06.3~ce~3-0~ubuntu_amd64.deb && \
+RUN dpkg -i /usr/local/docker-ce_18.06.3~ce~3-0~ubuntu_amd64.deb && \
       rm -f /usr/local/docker-ce_18.06.3~ce~3-0~ubuntu_amd64.deb
 
 # RUN apt-get install -y golang-1.9 && \
