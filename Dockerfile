@@ -39,6 +39,10 @@ RUN curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}
   && gpg --verify /sbin/tini.asc \
   && rm -rf /sbin/tini.asc /root/.gnupg \
   && chmod +x /sbin/tini
+  
+RUN apt-get install -y golang-1.9-go && \
+      echo "export PATH=$PATH:/usr/lib/go-1.9/bin" >> /etc/profile
+RUN apt-get install -y docker-ce
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
