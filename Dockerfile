@@ -9,7 +9,6 @@ RUN tar -zxvf go1.9.2.linux-amd64.tar.gz -C /usr/local && \
       echo export GOROOT=/usr/local/go >> /etc/profile && \
       echo export GOPATH=/var/jenkins_home >> /etc/profile && \
       echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile && \
-      source /etc/profile && \
       rm -f go1.9.2.linux-amd64.tar.gz
 
 #安装docker-ce
