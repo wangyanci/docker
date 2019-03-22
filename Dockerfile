@@ -10,6 +10,13 @@ RUN apt-get update && apt-get install -y git \
       libdevmapper1.02.1 \
       libltdl7 libseccomp2 && \
       rm -rf /var/lib/apt/lists/*
+      
+USER root
+RUN git clone https://github.com/edenhill/librdkafka.git && \
+      cd librdkafka && \
+      ./configure --prefix /usr && \
+      make && \
+      sudo make install 
 
 #安装golang1.9.2
 ADD https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz /usr/local
