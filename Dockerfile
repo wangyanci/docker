@@ -16,7 +16,7 @@ RUN git clone https://github.com/edenhill/librdkafka.git && \
       cd librdkafka && \
       ./configure --prefix /usr && \
       make && \
-      sudo make install 
+      make install 
 
 #安装golang1.9.2
 ADD https://dl.google.com/go/go1.9.2.linux-amd64.tar.gz /usr/local
