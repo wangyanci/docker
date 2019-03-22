@@ -1,8 +1,8 @@
 FROM openjdk:8-jdk-stretch
 
 RUN apt-get update && apt-get install -y git \
-      c++ \
       gcc \
+      c++ \
       curl \
       make \
       expect \
