@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y git \
       make \
       expect \
       iptables \
+      pkg-config \
       libdevmapper1.02.1 \
       libltdl7 libseccomp2 && \
       rm -rf /var/lib/apt/lists/*
