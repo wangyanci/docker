@@ -15,7 +15,7 @@ RUN apt-get update && apt-get install -y git \
       
 USER root
 
-echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+RUN echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 RUN git clone https://github.com/edenhill/librdkafka.git && \
       cd librdkafka && \
