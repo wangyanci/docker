@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y git \
       gcc \
       g++ \
       curl \
+      sudo \
       make \
       expect \
       iptables \
@@ -13,6 +14,9 @@ RUN apt-get update && apt-get install -y git \
       rm -rf /var/lib/apt/lists/*
       
 USER root
+
+echo 'jenkins ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+
 RUN git clone https://github.com/edenhill/librdkafka.git && \
       cd librdkafka && \
       ./configure --prefix /usr && \
