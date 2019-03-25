@@ -160,4 +160,12 @@ RUN chown -R  ${uid}:${gid} /usr/share/jenkins/ref/
 
 USER ${user}
 
+# 	# sudo dpkg -i libltdl7_2.4.6-0.1_amd64.deb
+# 	# sudo dpkg -i libseccomp2_2.3.1-2.1ubuntu2~16.04.1_amd64.deb
+# 	# sudo dpkg -i docker-ce_18.03.1~ce-0~ubuntu_amd64.deb
+	
+# 	升级到最新版本：
+# 	apt-get upgrade docker-ce
+
+
 # docker run -d -p 8080:8080 -p 50000:50000 -v /wyc/var/lib/jenkins/:/var/jenkins_home --add-host code-cbu.huawei.com:100.101.9.70 3a264caf9ce4
