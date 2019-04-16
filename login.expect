@@ -1,0 +1,29 @@
+#!/usr/bin/expect -f
+set HOST [lindex $argv 0]
+set USER [lindex $argv 1]
+set PASSWD [lindex $argv 2]
+spawn sh -c "echo $HOST $USER $PASSWD"
+
+spawn ssh -p 22  $USER@$HOST
+set timeout 30000
+expect {
+        "(yes/no)?"
+                {
+                        send "yes\n"
+                        expect "*assword:" {send "$PASSWD\r"}
+                }
+        "password:"
+                {
+                        send "$PASSWD\r"
+                }
+}
+set timeout 30000
+interact
+expect eof
+
+#use
+#expect -f login.expect 192.168.15.3 wyc wycPasswd
+
+
+#shell command su root
+#/usr/bin/expect -c 'set timeout -1; spawn su root; expect "Password:"; send "wycPasswd\r"; interact'
