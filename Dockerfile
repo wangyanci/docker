@@ -167,5 +167,5 @@ USER ${user}
 # 	升级到最新版本：
 # 	apt-get upgrade docker-ce
 
-
+# cat /var/jenkins_home/secrets/initialAdminPassword（ 默认密码文件）
 # docker run -d -p 8080:8080 -p 50000:50000 -v /wyc/var/lib/jenkins/:/var/jenkins_home --add-host code-cbu.huawei.com:100.101.9.70 3a264caf9ce4
